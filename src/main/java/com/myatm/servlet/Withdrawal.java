@@ -17,8 +17,8 @@ import com.myatm.core.WithdrawResponse;
 @WebServlet(urlPatterns = { "/Withdrawal" }, initParams = { @WebInitParam(name = "pin", value = ""),
 		@WebInitParam(name = "accountNumber", value = ""), @WebInitParam(name = "amount", value = "") })
 public class Withdrawal extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
+	
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */

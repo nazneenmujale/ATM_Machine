@@ -17,7 +17,7 @@ public class Account {
 	 * @param overDraft
 	 */
 	public Account(long accountNumber, int pin, long openingBalance, int overDraft) {
-		super();
+		
 		this.accountNumber = accountNumber;
 		this.pin = pin;
 		this.openingBalance = openingBalance;

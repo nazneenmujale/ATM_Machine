@@ -5,7 +5,7 @@ public class BalanceResponse {
 	private int overdraft;
 
 	public BalanceResponse(long openingBalance, int overdraft) {
-		super();
+		
 		this.openingBalance = openingBalance;
 		this.overdraft = overdraft;
 	}

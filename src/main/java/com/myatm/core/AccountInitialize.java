@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-//import javax.servlet.http.HttpServletResponse;
-
 public class AccountInitialize {
 
 	private static Map<Long, Account> listOfAccounts = new HashMap<>();
 	private static int atmHoldsAmount = 1500;
+
+	
 
 	private AccountInitialize() {
 	}
@@ -23,21 +23,7 @@ public class AccountInitialize {
 		listOfAccounts.put(account2.getAccountNumber(), account2);
 	}
 
-	public static void reinitialiseAccounts() {
-		listOfAccounts.clear();
-		Account account1 = new Account(123456789, 1234, 800, 200);
-		Account account2 = new Account(987654321, 4321, 1230, 150);
-		listOfAccounts.put(account1.getAccountNumber(), account1);
-		listOfAccounts.put(account2.getAccountNumber(), account2);
-	}
-
-	public static void reinitialiseATMholds() {
-		atmHoldsAmount = 1500;
-	}
-
-	public static int getAtmHoldsAmount() {
-		return atmHoldsAmount;
-	}
+	
 
 	/**
 	 * this will validate the pin enter by the customer
@@ -89,18 +75,10 @@ public class AccountInitialize {
 			withdrawResponse.setbalanceOverdraftWithdraw(accountOverdraftWithdraw);
 
 			atmHoldsAmount = atmHoldsAmount - amount;
-			return withdrawResponse;
-
-		} else {
-			System.out.println(" Withdrawal unsuccessful - Insufficient fund");
-
-			String displayMessage = "Withdrawal unsuccessful - Insufficient fund";
-			withdrawResponse.setRemainingBalance(listOfAccounts.get(accountNumber).getOpeningBalance());
-			withdrawResponse.setListOfResultNotes(withdrawZeroNotes);
-			withdrawResponse.setbalanceOverdraftWithdraw(listOfAccounts.get(accountNumber).getOverDraft());
-			withdrawResponse.setDisplayMessage(displayMessage);
-			return withdrawResponse;
+			
 		}
+
+		return withdrawResponse;
 	}
 
 	public static WithdrawResponse dispenseAmount(int amount, long accountNumber) {
@@ -112,14 +90,12 @@ public class AccountInitialize {
 			withdrawZeroNotes.put(entry.getKey(), 0);
 		}
     
-//		try {
 		// validate amount to check if the account or ATM holds it
 		
 		if ((amount <= ((listOfAccounts.get(accountNumber).getOpeningBalance())
 				+ listOfAccounts.get(accountNumber).getOverDraft())) && amount < atmHoldsAmount) {
-			withdrawResponse = dispense(amount, accountNumber);
-			return withdrawResponse;
-			//			return dispense(amount, accountNumber);
+			
+				return dispense(amount, accountNumber);
 		} else {
 
 			if (!(amount < (listOfAccounts.get(accountNumber).getOpeningBalance())) && amount < atmHoldsAmount) {
@@ -149,11 +125,7 @@ public class AccountInitialize {
 			withdrawResponse.setbalanceOverdraftWithdraw(listOfAccounts.get(accountNumber).getOverDraft());
 			return withdrawResponse;
 		}
-//	}catch(NullPointerException ex ) {
-//		System.out.println("Null pointer exception caught \n");
-//	}
-		
-//		return withdrawResponse;
+
 	}
 
 }

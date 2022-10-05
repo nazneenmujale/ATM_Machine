@@ -31,15 +31,12 @@ public class Notes {
 		for (Map.Entry<Integer, Integer> entry : listOfNotes.entrySet()) {
 			listOfNotesBackup.put(entry.getKey(), entry.getValue());
 		}
+		
 
 		for (Entry<Integer, Integer> entry : listOfNotes.entrySet()) {
 
 			int key = entry.getKey();
-			if (key > amountTobeDispensed) {
-				// System.out.println("The key:" + key + " is bigger than the amount: " +
-				// amountTobeDispensed);
-			} else {
-
+			if (key <= amountTobeDispensed) {
 				int notes;
 				notes = amountTobeDispensed / key;
 				// Check to see there are sufficient notes for dispense
@@ -63,23 +60,13 @@ public class Notes {
 
 		if (amountTobeDispensed == 0)
 			withDrawalResult = true;
-		else {
-			// Rollback the listOfNotes if withdrawal fails
 
-			for (Map.Entry<Integer, Integer> entry : listOfNotesBackup.entrySet()) {
-				listOfNotes.put(entry.getKey(), entry.getValue());
-			}
-		}
 
-//		if (withDrawalResult) {
 			// Resultant Map after cash withdrawal is as follows
 			for (Map.Entry<Integer, Integer> entry : listOfNotesBackup.entrySet()) {
 				listOfNotesBackup.put(entry.getKey(), entry.getValue() - listOfNotes.get(entry.getKey()));
 			}
 			return listOfNotesBackup;
-//		} else {
-//			return null;
-//		}
 			
 	}
 }

@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "7de1e765-e07a-4f9b-9862-d1960f7e0902",
+		"name": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TC2.1- Correct Account Number and Pin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/BalanceCheck?accountNumber=123456789&pin=1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"BalanceCheck"
+					],
+					"query": [
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "pin",
+							"value": "1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC2.2- Correct Account Number and Pin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/BalanceCheck?accountNumber=123456789&pin=1243",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"BalanceCheck"
+					],
+					"query": [
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "pin",
+							"value": "1243"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC2.3- Correct Account Number and Pin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/BalanceCheck?accountNumber=12345678&pin=1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"BalanceCheck"
+					],
+					"query": [
+						{
+							"key": "accountNumber",
+							"value": "12345678"
+						},
+						{
+							"key": "pin",
+							"value": "1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC-2.5 Withdrawal, incorrrect pin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=1243&accountNumber=123456789&amount=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "1243"
+						},
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "amount",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

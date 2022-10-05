@@ -1,0 +1,499 @@
+{
+	"info": {
+		"_postman_id": "6a925083-e8fe-4050-98da-d2663372f569",
+		"name": "Withdrawal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TC 4.1/4.2- Money withdrawal where there is sufficient money in the user account and in ATM",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=1234&accountNumber=123456789&amount=185",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "1234"
+						},
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "amount",
+							"value": "185"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC 4.3- User entering invalid amount to be withdrawn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=1234&accountNumber=123456789&amount=111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "1234"
+						},
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "amount",
+							"value": "111"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC 4.4- Money withdrawal when there is insufficient money in the user account ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=1234&accountNumber=123456789&amount=1000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "1234"
+						},
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "amount",
+							"value": "1000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC 4.5- Money withdrawal check for higher currency denomination when higher currency is limited ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=1234&accountNumber=123456789&amount=555",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "1234"
+						},
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "amount",
+							"value": "555"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC 4.6- Money withdrawal where there is insufficient a specific currency note is zero in the ATM",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=1234&accountNumber=123456789&amount=60",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "1234"
+						},
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "amount",
+							"value": "60"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC 4.7- Money withdrawal checking the overdraft withdrawal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=1234&accountNumber=123456789&amount=50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "1234"
+						},
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "amount",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC 4.8- Money withdrawal checking the overdraft withdrawal and not sufficient money in the user account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=1234&accountNumber=123456789&amount=250",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "1234"
+						},
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "amount",
+							"value": "250"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC 4.9- Successful money withdrawal for the other user account.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=4321&accountNumber=987654321&amount=200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "4321"
+						},
+						{
+							"key": "accountNumber",
+							"value": "987654321"
+						},
+						{
+							"key": "amount",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC 4.10- Money withdrawal when there is not sufficient money in ATM",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=4321&accountNumber=987654321&amount=600",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "4321"
+						},
+						{
+							"key": "accountNumber",
+							"value": "987654321"
+						},
+						{
+							"key": "amount",
+							"value": "600"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC 4.11- Money withdrawal when there is not sufficient money in ATM and in user account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "account",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "pin",
+							"value": "1234",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/MyATM/Withdrawal?pin=1234&accountNumber=123456789&amount=600",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"MyATM",
+						"Withdrawal"
+					],
+					"query": [
+						{
+							"key": "pin",
+							"value": "1234"
+						},
+						{
+							"key": "accountNumber",
+							"value": "123456789"
+						},
+						{
+							"key": "amount",
+							"value": "600"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
