@@ -12,22 +12,19 @@ import com.myatm.core.AccountService;
 import com.myatm.core.WithdrawResponse;
 
 /**
- * Servlet implementation class Withdrawal
+ * Servlet implementation class Withdrawal This servlet has the get request for
+ * the withdrawal
+ * @author Nazneen
  */
 @WebServlet(urlPatterns = { "/Withdrawal" }, initParams = { @WebInitParam(name = "pin", value = ""),
 		@WebInitParam(name = "accountNumber", value = ""), @WebInitParam(name = "amount", value = "") })
 public class Withdrawal extends HttpServlet {
-	
-	
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public Withdrawal() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	/**
+	 * This method is to perform the post request for the withdrawal process. It
+	 * return the balance amount in the account and the amount that can be
+	 * withdrawn.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */

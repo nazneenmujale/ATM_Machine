@@ -13,23 +13,26 @@ import com.myatm.core.BalanceResponse;
 import com.myatm.core.WithdrawResponse;
 
 /**
- * Servlet implementation class BalanceCheck
+ * Servlet implementation class BalanceCheck This servlet has the get request
+ * for the Balance check
+ * @author Nazneen
  */
 
 @WebServlet(urlPatterns = { "/BalanceCheck" }, initParams = { @WebInitParam(name = "accountNumber", value = ""),
 		@WebInitParam(name = "pin", value = "") })
 
 public class BalanceCheck extends HttpServlet {
-	
 
-	
 	/**
+	 * This servlet method handles the get request to the "/BalanceCheck URI, the
+	 * balance enquiry for the customer account It gets the balance only if the
+	 * customer validation is successfull.
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 *      response) *
 	 */
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		if (request.getParameterMap().containsKey("accountNumber") && request.getParameterMap().containsKey("pin")) {
 			long accountNumber = Long.valueOf(request.getParameter("accountNumber"));

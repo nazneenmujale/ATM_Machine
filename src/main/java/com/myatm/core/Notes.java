@@ -5,24 +5,26 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
+/**
+ * + This class has the algorithm for the exact amount dispense
+ * 
+ * @author Nazneen
+ *
+ */
 public class Notes {
 
 	final static Map<Integer, Integer> listOfNotes = new TreeMap<Integer, Integer>(Collections.reverseOrder());
 	static boolean withDrawalResult = false;
 
 	static {
-		cashUpload();
-	}
-
-	public static void cashUpload() {
 		listOfNotes.clear();
 		listOfNotes.put(50, 10);
 		listOfNotes.put(20, 30);
 		listOfNotes.put(10, 30);
 		listOfNotes.put(5, 20);
-
 	}
 
+	
 	public static Map<Integer, Integer> notesDispenserCals(int amountTobeDispensed) {
 		// Logic for notes to be dispensed
 
@@ -31,7 +33,6 @@ public class Notes {
 		for (Map.Entry<Integer, Integer> entry : listOfNotes.entrySet()) {
 			listOfNotesBackup.put(entry.getKey(), entry.getValue());
 		}
-		
 
 		for (Entry<Integer, Integer> entry : listOfNotes.entrySet()) {
 
@@ -61,12 +62,11 @@ public class Notes {
 		if (amountTobeDispensed == 0)
 			withDrawalResult = true;
 
+		// Resultant Map after cash withdrawal is as follows
+		for (Map.Entry<Integer, Integer> entry : listOfNotesBackup.entrySet()) {
+			listOfNotesBackup.put(entry.getKey(), entry.getValue() - listOfNotes.get(entry.getKey()));
+		}
+		return listOfNotesBackup;
 
-			// Resultant Map after cash withdrawal is as follows
-			for (Map.Entry<Integer, Integer> entry : listOfNotesBackup.entrySet()) {
-				listOfNotesBackup.put(entry.getKey(), entry.getValue() - listOfNotes.get(entry.getKey()));
-			}
-			return listOfNotesBackup;
-			
 	}
 }

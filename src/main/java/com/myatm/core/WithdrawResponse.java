@@ -4,6 +4,15 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * + This class has the attributes that will be sent in the response to the
+ * withdrawal request. The withdrawal response sends the balance amount in the
+ * account , balance with the overdraft amount , the list of notes that is
+ * dispensed for the amount and the display message.
+ * 
+ * @author Nazneen
+ *
+ */
 public class WithdrawResponse {
 	private long remainingBalance;
 	private long balanceOverdraftWithdraw;

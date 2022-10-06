@@ -1,6 +1,12 @@
 package com.myatm.core;
 
-
+/**
+ * + This Class provides all the account services like customer validation ,
+ * balance enquiry and withdrawal.
+ * 
+ * @author Nazneen
+ *
+ */
 
 public class AccountService {
 

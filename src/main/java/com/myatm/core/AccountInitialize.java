@@ -5,12 +5,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * + This class processes all the account related queries like the customer
+ * validation, Balance check and Withdrawal.
+ * 
+ * @author Nazneen
+ *
+ */
 public class AccountInitialize {
 
 	private static Map<Long, Account> listOfAccounts = new HashMap<>();
 	private static int atmHoldsAmount = 1500;
-
-	
 
 	private AccountInitialize() {
 	}
@@ -23,7 +28,9 @@ public class AccountInitialize {
 		listOfAccounts.put(account2.getAccountNumber(), account2);
 	}
 
-	
+	public static int getAtmHoldsAmount() {
+		return atmHoldsAmount;
+	}
 
 	/**
 	 * this will validate the pin enter by the customer
@@ -33,13 +40,9 @@ public class AccountInitialize {
 	 * @return boolean if valid then true else false.
 	 */
 	public static boolean checkValidPin(int pin, long accountNumber) {
-		if (listOfAccounts.containsKey(accountNumber)) {
-			if (pin == listOfAccounts.get(accountNumber).getPin()) {
-				return true;
-			} else
-				return false;
-		} else
-			return false;
+
+		return ((listOfAccounts.containsKey(accountNumber)) && (pin == listOfAccounts.get(accountNumber).getPin()));
+
 	}
 
 	public static BalanceResponse getBalance(long accountNumber) {
@@ -75,7 +78,7 @@ public class AccountInitialize {
 			withdrawResponse.setbalanceOverdraftWithdraw(accountOverdraftWithdraw);
 
 			atmHoldsAmount = atmHoldsAmount - amount;
-			
+
 		}
 
 		return withdrawResponse;
@@ -89,13 +92,13 @@ public class AccountInitialize {
 		for (Map.Entry<Integer, Integer> entry : Notes.listOfNotes.entrySet()) {
 			withdrawZeroNotes.put(entry.getKey(), 0);
 		}
-    
+
 		// validate amount to check if the account or ATM holds it
-		
+
 		if ((amount <= ((listOfAccounts.get(accountNumber).getOpeningBalance())
 				+ listOfAccounts.get(accountNumber).getOverDraft())) && amount < atmHoldsAmount) {
-			
-				return dispense(amount, accountNumber);
+
+			return dispense(amount, accountNumber);
 		} else {
 
 			if (!(amount < (listOfAccounts.get(accountNumber).getOpeningBalance())) && amount < atmHoldsAmount) {
